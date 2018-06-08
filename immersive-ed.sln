@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "immersive-ed", "Assembly-CSharp.csproj", "{A9463FF4-279C-CAAF-0D5C-661B92761BEB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "immersive-ed", "Assembly-CSharp-firstpass.csproj", "{A130A4AD-D8DD-52CF-F86C-52A92B0B5502}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "immersive-ed", "Assembly-CSharp-Editor.csproj", "{DA523028-CB08-9178-C5F1-FC48AF09ADCC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A9463FF4-279C-CAAF-0D5C-661B92761BEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9463FF4-279C-CAAF-0D5C-661B92761BEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9463FF4-279C-CAAF-0D5C-661B92761BEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9463FF4-279C-CAAF-0D5C-661B92761BEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A130A4AD-D8DD-52CF-F86C-52A92B0B5502}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A130A4AD-D8DD-52CF-F86C-52A92B0B5502}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A130A4AD-D8DD-52CF-F86C-52A92B0B5502}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A130A4AD-D8DD-52CF-F86C-52A92B0B5502}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA523028-CB08-9178-C5F1-FC48AF09ADCC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA523028-CB08-9178-C5F1-FC48AF09ADCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA523028-CB08-9178-C5F1-FC48AF09ADCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA523028-CB08-9178-C5F1-FC48AF09ADCC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal
