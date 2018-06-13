@@ -18,7 +18,7 @@
     <meta-data android:name="com.google.ar.core.min_apk_version" android:value="180409000" />
     <meta-data android:name="com.google.ar.core" android:value="required" />
     <meta-data android:name="unityplayer.SkipPermissionsDialog" android:value="true" />
-    <meta-data android:name="unity.build-id" android:value="8c01ca5b-9aaa-432d-84a3-1fbe9612a0a9" />
+    <meta-data android:name="unity.build-id" android:value="0e31be9c-2c1f-4eae-99d5-d1a3315591e2" />
     <meta-data android:name="unity.splash-mode" android:value="0" />
     <meta-data android:name="unity.splash-enable" android:value="True" />
     <meta-data android:name="android.max_aspect" android:value="2.1" />

@@ -30,18 +30,18 @@ public class MoodTracker : MonoBehaviour {
 
 		//Update uiManager-cube position
 		Vector3 moodTrackerPosition = new Vector3 (uiManager.normalizedMoodTrackerCoordinates.x, uiManager.normalizedMoodTrackerCoordinates.y, uiManager.normalizedMoodTrackerCoordinates.z);
-		gameObject.transform.localPosition = moodTrackerPosition;
+//		gameObject.transform.localPosition = moodTrackerPosition;
 //		gameObject.transform.lossyScale = new Vector3 (uiManager.normalizedMoodTrackerCoordinates.z * 0.2f,uiManager.normalizedMoodTrackerCoordinates.z * 0.2f,uiManager.normalizedMoodTrackerCoordinates.z * 0.2f);
-		gameObject.transform.localScale = new Vector3 (uiManager.normalizedMoodTrackerCoordinates.w,uiManager.normalizedMoodTrackerCoordinates.w,uiManager.normalizedMoodTrackerCoordinates.w);
+//		gameObject.transform.localScale = new Vector3 (uiManager.normalizedMoodTrackerCoordinates.w,uiManager.normalizedMoodTrackerCoordinates.w,uiManager.normalizedMoodTrackerCoordinates.w);
 
 //		gameObject.transform.rotation = uiManager.emojiOrientation;
-		gameObject.transform.Rotate(new Vector3(uiManager.GetRotation() - currRotationX,0f,0f));
-		currRotationX = uiManager.GetRotation ();
+//		gameObject.transform.Rotate(new Vector3(uiManager.GetRotation() - currRotationX,0f,0f));
+//		currRotationX = uiManager.GetRotation ();
 		//Update mood-cube color
 //		Color moodColor = uiManager.GetMoodTrackerColor();
 //		moodTrackerRenderer.material.color = moodColor;
-		Material emoji = uiManager.GetMoodTrackerEmoji();
-		moodTrackerRenderer.material = emoji;
+//		Material emoji = uiManager.GetMoodTrackerEmoji();
+//		moodTrackerRenderer.material = emoji;
 		//Debug.Log ("Color: " + moodColor);
 
 

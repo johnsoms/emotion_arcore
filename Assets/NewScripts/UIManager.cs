@@ -17,6 +17,7 @@ public class UIManager : MonoBehaviour {
 	public GameObject inputDeviceCamera2;
 	//public GameObject webcamRenderPlane;
 	public GameObject webcamRenderQuad;
+	public GameObject frontcamRenderQuad;
 	public Text FacialEmotionText;
 	public Text FACSText;
 	public Text SentimentEmotionText;
@@ -37,8 +38,10 @@ public class UIManager : MonoBehaviour {
 	public Material disgust1;
 	public Material disgust2;
 	public Material neutral;
-
 	public Quaternion emojiOrientation;
+	public int count = 0;
+
+	public bool back = true;
 
 	private Dictionary<string,Material[]> facialEmojiDict;
 	//Facial Emotion Emoji Associations
@@ -76,10 +79,11 @@ public class UIManager : MonoBehaviour {
 		facialEmojiDict = new Dictionary<string,Material[]>{{"anger", new Material[]{anger1,anger2}},{"fear",new Material[]{fear1,fear2}},{"joy",new Material[]{joy1,joy2}},{"surprise",new Material[]{surprise1,surprise2}},{"sadness",new Material[]{sadness1,sadness2}},{"disgust",new Material[]{disgust1,disgust2}},{"neutral",new Material[]{neutral,neutral}}};
 		gameManagerScript = (GameManager) gameManagerObject.GetComponent(typeof(GameManager));
 		camInputScript = (Affdex.CameraInput) inputDeviceCamera.GetComponent<Affdex.CameraInput>();
+
 		camInputScript2 = (Affdex2.CameraInput) inputDeviceCamera.GetComponent<Affdex2.CameraInput>();
 		//planeRenderer = (Renderer) webcamRenderPlane.GetComponent<Renderer>();
 		quadRenderer = webcamRenderQuad.GetComponent<Renderer> ();
-		// Camera feed parameters
+//		// Camera feed parameters
 		if (camInputScript.Texture == null) {
 			Debug.Log ("Camera not started");
 			feedWidth = camInputScript.targetWidth;
@@ -87,11 +91,22 @@ public class UIManager : MonoBehaviour {
 			camReady = false;
 		}
 
+		frontRenderer = frontcamRenderQuad.GetComponent<Renderer> ();
+
+		if (camInputScript2.Texture == null) {
+			Debug.Log ("Camera2 not started");
+			frontFeedWidth = camInputScript2.targetWidth;
+			frontFeedHeight = camInputScript2.targetHeight;
+			frontcamReady = false;
+		}
+
 		SetFeed ();
+
+
 
 		//Apply webcam texture to quad gameobject
 		quadRenderer.material.mainTexture = camInputScript.Texture;
-
+		frontRenderer.material.mainTexture = camInputScript2.Texture;
 		// Initalize the colors
 
 
@@ -115,14 +130,49 @@ public class UIManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		count++;
 		// Display the webcam input
 		//planeRenderer.material.mainTexture = camInputScript.Texture;
-		quadRenderer.material.mainTexture = camInputScript.Texture;
+		Debug.Log(back);
+//		camInputScript.gameObject.SetActive (false);
+//
+//		camInputScript2.gameObject.SetActive (true);
+//
+//		camInputScript.enabled = false;
+//		camInputScript2.enabled = true;
 
+		if (count>5) {
+			camInputScript2.Play ();
+			camInputScript.Stop ();
+//			camInputScript = (Affdex.CameraInput) inputDeviceCamera.GetComponent<Affdex.CameraInput>();
+			count = -5;
+//			camInputScript.Restart();
+//			if (camInputScript.Texture == null) {
+//				Debug.Log ("Camera not started");
+//				feedWidth = camInputScript.targetWidth;
+//				feedHeight = camInputScript.targetHeight;
+//				camReady = false;
+//			}
+//			SetFeed ();
+			frontRenderer.material.mainTexture = camInputScript2.Texture;
+			camInputScript2.ProcessFrame ();
+		} else if (count > 0) {
+			camInputScript.Play ();
+			camInputScript2.Stop ();
+			//			camInputScript = (Affdex.CameraInput) inputDeviceCamera.GetComponent<Affdex.CameraInput>();
+			quadRenderer.material.mainTexture = camInputScript.Texture;
+
+			camInputScript.ProcessFrame ();
+//
+//			camInputScript.Stop ();
+//			camInputScript2.Play ();
+//			camInputScript2.ProcessFrame ();
+//			frontRenderer.material.mainTexture = camInputScript2.Texture;
+		}
+		back = !back;
 		if (gameManagerScript.useVocalToneEmotion)
 		{
 			vocalToneResults = gameManagerScript.getCurrentVocalEmotion ();
-			VocalPADText.text = "Temper: " + vocalToneResults.TemperVal + "\nArousal: " + vocalToneResults.ArousalVal + "\nValence: " + vocalToneResults.ValenceVal;
 		}
 			
 	}
@@ -140,8 +190,9 @@ public class UIManager : MonoBehaviour {
 				EmotionStruct currentEmotions2 = gameManagerScript.getCurrentFacialEmotion2();
 				FACSStruct currentFACS = gameManagerScript.getCurrentFACS ();
 				FACSStruct currentFACS2 = gameManagerScript.getCurrentFACS2 ();
-				FacialEmotionText.text = "Joy: " + currentEmotions.joy + "\nAnger: " + currentEmotions.anger + "\nFear: " + currentEmotions.fear + "\nDisgust: " + currentEmotions.disgust + "\nSadness: " + currentEmotions.sadness + "\nContempt: " + currentEmotions.contempt + "\nValence: " + currentEmotions.valence + "\nEngagement: "+currentEmotions.engagement;
-				FACSText.text =  "Attention: "+ currentFACS.Attention + "\nBrowFurrow: "+ currentFACS.BrowFurrow + "\nBrowRaise: "+ currentFACS.BrowRaise + "\nChinRaise: "+ currentFACS.ChinRaiser + "\nEyeClose: "+ currentFACS.EyeClosure + "\nInnerEyebrowRaise: "+ currentFACS.InnerEyeBrowRaise + "\nLipCornerDepress: "+ currentFACS.LipCornerDepressor + "\nLipPress: "+ currentFACS.LipPress + "\nLipPucker: "+ currentFACS.LipPucker + "\nLipSuck: "+ currentFACS.LipSuck + "\nMouthOpen: "+ currentFACS.MouthOpen + "\nNoseWrinkle: "+ currentFACS.NoseWrinkler + "\nSmile: "+ currentFACS.Smile +"\nSmirk: "+ currentFACS.Smirk + "\nUpperLipRaise"+currentFACS.UpperLipRaiser;
+				VocalPADText.text = "                      "+Affdex.CameraInput.sampleRate;
+				FacialEmotionText.text = "Joy: " + currentEmotions2.joy + "\nAnger: " + currentEmotions2.anger + "\nFear: " + currentEmotions2.fear + "\nDisgust: " + currentEmotions2.disgust + "\nSadness: " + currentEmotions2.sadness + "\nContempt: " + currentEmotions2.contempt + "\nValence: " + currentEmotions2.valence + "\nEngagement: "+currentEmotions2.engagement;
+				FACSText.text =  "Attention: "+ currentFACS2.Attention + "\nBrowFurrow: "+ currentFACS2.BrowFurrow + "\nBrowRaise: "+ currentFACS2.BrowRaise + "\nChinRaise: "+ currentFACS2.ChinRaiser + "\nEyeClose: "+ currentFACS2.EyeClosure + "\nInnerEyebrowRaise: "+ currentFACS2.InnerEyeBrowRaise + "\nLipCornerDepress: "+ currentFACS2.LipCornerDepressor + "\nLipPress: "+ currentFACS2.LipPress + "\nLipPucker: "+ currentFACS2.LipPucker + "\nLipSuck: "+ currentFACS2.LipSuck + "\nMouthOpen: "+ currentFACS2.MouthOpen + "\nNoseWrinkle: "+ currentFACS2.NoseWrinkler + "\nSmile: "+ currentFACS2.Smile +"\nSmirk: "+ currentFACS2.Smirk + "\nUpperLipRaise"+currentFACS2.UpperLipRaiser;
 				// Update facial emotion colors
 				if (gameManagerScript.useAugmentedBasicEmotions) {
 					currentValue = (currentEmotions.valence + 175f) / 300f;
@@ -344,6 +395,11 @@ public class UIManager : MonoBehaviour {
 	private float feedHeight;
 	private bool camReady;
 
+	private Renderer frontRenderer;
+	private float frontFeedWidth;
+	private float frontFeedHeight;
+	private bool frontcamReady;
+
 	public void SetFeed (){
 
 		float flipDisplayX = flipHorizontal ? 1f : -1f;
@@ -360,6 +416,22 @@ public class UIManager : MonoBehaviour {
 		//For setting up Cam Quad Display
 		Texture2D targetTexture = new Texture2D((int)feedWidth, (int)feedHeight, TextureFormat.BGRA32, false);
 		quadRenderer.material.mainTexture = targetTexture;
+
+		float frontFlipDisplayX = flipHorizontal ? 1f : -1f;
+		float frontFlipDisplayY = flipVertical ? 1f : -1f;
+
+		// Set the webcam-Render-Quad to have the same aspect ratio as the video feed
+		float frontaspectRatio = frontFeedWidth / frontFeedHeight;
+		frontcamRenderQuad.transform.localScale = new Vector3 (-10*flipDisplayX*frontaspectRatio*displayHeight, -10*flipDisplayY*displayHeight, 1.0f);
+
+
+//		Debug.Log (" Feed Width: " + feedWidth + " Feed Height: " + feedHeight + " Aspect Ratio: " + aspectRatio);
+
+		//New code
+		//For setting up Cam Quad Display
+		Texture2D frontTargetTexture = new Texture2D((int)frontFeedWidth, (int)frontFeedHeight, TextureFormat.BGRA32, false);
+	
+		frontRenderer.material.mainTexture = frontTargetTexture;
 
 	}
 

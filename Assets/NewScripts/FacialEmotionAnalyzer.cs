@@ -19,7 +19,7 @@ public class FacialEmotionAnalyzer : ImageResultsListener {
 		currentEmotions = new EmotionStruct();
 		currentFACS = new FACSStruct ();
 		emotionWindow = new ArrayList();
-		emotionWindow.Capacity = 10;
+		emotionWindow.Capacity = 5;
 	}
 	
 	// Update is called once per frame
@@ -38,18 +38,18 @@ public class FacialEmotionAnalyzer : ImageResultsListener {
 
 	public override void onFaceFound(float timestamp, int faceId)
     {
-        Debug.Log("Found the face");
+//        Debug.Log("Found the face");
     }
 
     public override void onFaceLost(float timestamp, int faceId)
     {
-        Debug.Log("Lost the face");
+//        Debug.Log("Lost the face");
     }
 
     public override void onImageResults(Dictionary<int, Face> faces)
     {
-        // Debug.Log("Got face results");
-
+         Debug.Log("Got face results");
+		Debug.Log(faces);
         foreach (KeyValuePair<int, Face> pair in faces)
         {
             int FaceId = pair.Key;  // The Face Unique Id.

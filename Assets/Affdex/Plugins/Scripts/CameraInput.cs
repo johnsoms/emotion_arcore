@@ -17,7 +17,7 @@ namespace Affdex
         /// Number of frames per second to sample.  Use 0 and call ProcessFrame() manually to run manually.
         /// Enable/Disable to start/stop the sampling
         /// </summary>
-        public float sampleRate = 20;
+        static public float sampleRate = 0;
 
         /// <summary>
         /// Should the selected camera be front facing?
@@ -115,6 +115,36 @@ namespace Affdex
             }
 #endif
         }
+
+		public void Restart()
+		{
+			Stop ();
+			if (!AffdexUnityUtils.ValidPlatform())
+				return;
+			detector = GetComponent<Detector>();
+			#if !UNITY_XBOXONE && UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN || UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX || UNITY_IOS || UNITY_ANDROID
+			devices = WebCamTexture.devices;
+			if (devices.Length > 0)
+			{
+				SelectCamera(!isFrontFacing);
+
+				if (device.name != "Null")
+				{
+					cameraTexture = new WebCamTexture(device.name, targetWidth, targetHeight, (int)sampleRate);
+					cameraTexture.Play();
+				}
+			}
+			#endif
+		}
+
+		public void Stop(){
+			cameraTexture.Stop ();
+		}
+
+		public void Play(){
+			cameraTexture.Play ();
+		}
+
 
         /// <summary>
         /// Set the target device (by name or orientation)

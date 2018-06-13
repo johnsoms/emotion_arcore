@@ -173,6 +173,18 @@
  <Reference Include="TextMeshPro-2017.2-Editor">
  <HintPath>/Users/Maxwell/Downloads/immersive-ed-1919aa86b207ab818dd3c71b637dff6e483f6c46/immersive-ed/Assets/TextMesh Pro/Plugins/Editor DLL/TextMeshPro-2017.2-Editor.dll</HintPath>
  </Reference>
+ <Reference Include="Google.JarResolver_v1.2.64.0">
+ <HintPath>/Users/Maxwell/Downloads/immersive-ed-1919aa86b207ab818dd3c71b637dff6e483f6c46/immersive-ed/Assets/PlayServicesResolver/Editor/Google.JarResolver_v1.2.64.0.dll</HintPath>
+ </Reference>
+ <Reference Include="Google.VersionHandler">
+ <HintPath>/Users/Maxwell/Downloads/immersive-ed-1919aa86b207ab818dd3c71b637dff6e483f6c46/immersive-ed/Assets/PlayServicesResolver/Editor/Google.VersionHandler.dll</HintPath>
+ </Reference>
+ <Reference Include="Google.VersionHandlerImpl_v1.2.64.0">
+ <HintPath>/Users/Maxwell/Downloads/immersive-ed-1919aa86b207ab818dd3c71b637dff6e483f6c46/immersive-ed/Assets/PlayServicesResolver/Editor/Google.VersionHandlerImpl_v1.2.64.0.dll</HintPath>
+ </Reference>
+ <Reference Include="Google.IOSResolver_v1.2.64.0">
+ <HintPath>/Users/Maxwell/Downloads/immersive-ed-1919aa86b207ab818dd3c71b637dff6e483f6c46/immersive-ed/Assets/PlayServicesResolver/Editor/Google.IOSResolver_v1.2.64.0.dll</HintPath>
+ </Reference>
  <Reference Include="Newtonsoft.Json">
  <HintPath>/Users/Maxwell/Downloads/immersive-ed-1919aa86b207ab818dd3c71b637dff6e483f6c46/immersive-ed/Assets/JsonDotNet/Assemblies/Standalone/Newtonsoft.Json.dll</HintPath>
  </Reference>
@@ -196,18 +208,6 @@
  </Reference>
  <Reference Include="UnityEngine.StandardEvents">
  <HintPath>/Users/Maxwell/Library/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.10/UnityEngine.StandardEvents.dll</HintPath>
- </Reference>
- <Reference Include="Google.VersionHandlerImpl_v1.2.64.0">
- <HintPath>/Users/Maxwell/Downloads/immersive-ed-1919aa86b207ab818dd3c71b637dff6e483f6c46/immersive-ed/Assets/PlayServicesResolver/Editor/Google.VersionHandlerImpl_v1.2.64.0.dll</HintPath>
- </Reference>
- <Reference Include="Google.JarResolver_v1.2.64.0">
- <HintPath>/Users/Maxwell/Downloads/immersive-ed-1919aa86b207ab818dd3c71b637dff6e483f6c46/immersive-ed/Assets/PlayServicesResolver/Editor/Google.JarResolver_v1.2.64.0.dll</HintPath>
- </Reference>
- <Reference Include="Google.VersionHandler">
- <HintPath>/Users/Maxwell/Downloads/immersive-ed-1919aa86b207ab818dd3c71b637dff6e483f6c46/immersive-ed/Assets/PlayServicesResolver/Editor/Google.VersionHandler.dll</HintPath>
- </Reference>
- <Reference Include="Google.IOSResolver_v1.2.64.0">
- <HintPath>/Users/Maxwell/Downloads/immersive-ed-1919aa86b207ab818dd3c71b637dff6e483f6c46/immersive-ed/Assets/PlayServicesResolver/Editor/Google.IOSResolver_v1.2.64.0.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
  <HintPath>/Applications/Unity/PlaybackEngines/AppleTVSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>

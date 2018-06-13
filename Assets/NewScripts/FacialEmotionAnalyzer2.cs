@@ -19,7 +19,7 @@ public class FacialEmotionAnalyzer2 : ImageResultsListener2 {
 		currentEmotions = new EmotionStruct();
 		currentFACS = new FACSStruct ();
 		emotionWindow = new ArrayList();
-		emotionWindow.Capacity = 10;
+		emotionWindow.Capacity = 5;
 	}
 	
 	// Update is called once per frame
@@ -48,7 +48,7 @@ public class FacialEmotionAnalyzer2 : ImageResultsListener2 {
 
     public override void onImageResults(Dictionary<int, Face> faces)
     {
-        // Debug.Log("Got face results");
+         Debug.Log("Got face results");
 
         foreach (KeyValuePair<int, Face> pair in faces)
         {
